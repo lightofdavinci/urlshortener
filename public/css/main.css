@@ -28,3 +28,7 @@ img {
 #cl {
 	margin-top: 15px;
 }
+
+#err{
+	color:red;
+}
