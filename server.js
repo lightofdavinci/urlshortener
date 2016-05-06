@@ -22,12 +22,11 @@ db.createCollection("sites",{
     max:5000
 });
 
-routes(app,db);
+routes(app);
 api(app,db);
 
-var port = process.env.PORT || 8080;
-app.listen(port,  function () {
-	console.log('Node.js listening on port ' + port + '...');
+app.listen(8080,  function () {
+	console.log('Node.js listening on port ' + 8080 + '...');
 });
 
 });
