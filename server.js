@@ -8,7 +8,7 @@ var api = require('./app/api/shortener.js');
 var app = express();
 require('dotenv').load({silent:true});
 
-mongo.MongoClient.connect('mongodb://localhost:27017/shortener', function (err,db){
+mongo.MongoClient.connect(process.env.MONGOLAB_URI||'mongodb://localhost:27017/shortener', function (err,db){
 
 if(err){
     console.error('database failed to connect',err);
