@@ -14,7 +14,7 @@ module.exports = function (app,db) {
 		db.collection('sites').findOne({"short_url":url}, function(err, result){
 			if(err){throw err;}
 			if(result){
-				res.redirect(result.original_url);
+				res.redirect("/" + result.original_url);
 			} else {
 				res.send({"error":"there is no such a url in the database"});
 			}
@@ -25,7 +25,7 @@ module.exports = function (app,db) {
 	app.get('/new/:url*',function(req,res) {
 		var toCheck = req.url.slice(5);
 		if(validation(toCheck)){
-			var objToSave = { "original_url": toCheck , "short_url": process.env.APP_URL + "/" + (Math.floor(Math.random()*7000)+1).toString()};
+			var objToSave = { "original_url": toCheck , "short_url": process.env.APP_URL + (Math.floor(Math.random()*7000)+1).toString()};
 			res.send(objToSave);
 			db.collection('sites').save(objToSave, function(err, result){
 				if(err){throw err;}
